@@ -1,0 +1,44 @@
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.sidenav {
+    padding-top: 20px;
+    background-color: #f8f9fa;
+    height: 100%;
+}
+
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
+
+.movie-card {
+    margin-bottom: 20px;
+}
+
+.img-fluid {
+    width: 400px;
+    height: 400px;
+}
+
+.card {
+    margin-top: 20px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {
+        height: auto;
+    }
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Web</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+<div id="app"></div>
+<script type="text/babel">
+    const Navbar = () => (
+        <nav className="navbar navbar-default">
+            <div className="container-fluid">
+                <div className="navbar-header">
+                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                    </button>
+                    <a className="navbar-brand" href="#">MovieZone</a>
+                </div>
+                <div className="collapse navbar-collapse" id="myNavbar">
+                    <ul className="nav navbar-nav">
+                        <li className="active"><a href="#">Home</a></li>
+                        <li><a href="#">Popular</a></li>
+                        <li><a href="#">Films</a></li>
+                        <li><a href="#">Series</a></li>
+                    </ul>
+                    <ul className="nav navbar-nav navbar-right">
+                        <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    );
+
+    const Sidebar = () => (
+        <div className="col-sm-2 sidenav">
+            <h4>Menu</h4>
+            <p><a href="#">Best films</a></p>
+            <p><a href="#">Best series</a></p>
+            <p><a href="#">News</a></p>
+        </div>
+    );
+
+    const MovieCard = ({ title, year, poster }) => (
+        <div className="movie-card col-sm-4">
+            <div className="card">
+                <img src={poster} alt={title} className="img-fluid" />
+                <div className="card-body">
+                    <h5 className="card-title">{title}</h5>
+                    <p className="card-text text-muted">{year}</p>
+                </div>
+            </div>
+        </div>
+    );
+
+    const Content = () => {
+        const movies = [
+            {
+                title: "Interstellar",
+                year: 2014,
+                poster: "https://ic.pics.livejournal.com/nikerbriker/6034315/99564/99564_original.jpg"
+            },
+            {
+                title: "The Matrix",
+                year: 1999,
+                poster: "https://ic.pics.livejournal.com/dubikvit/65747770/8488098/8488098_900.jpg"
+            },
+            {
+                title: "Forrest Gump",
+                year: 1994,
+                poster: "https://ic.pics.livejournal.com/teachron/67407322/3226913/3226913_900.jpg"
+            }
+        ];
+
+        return (
+            <div className="col-sm-8 text-left">
+                <h1>Welcome to MovieZone</h1>
+                <h3>Top movies</h3>
+                <div className="row">
+                    {movies.map((movie, index) => (
+                        <MovieCard key={index} title={movie.title} year={movie.year} poster={movie.poster} />
+                    ))}
+                </div>
+            </div>
+        );
+    };
+
+    const Footer = () => (
+        <footer className="container-fluid text-center">
+            <p>© 2023 Movie</p>
+        </footer>
+    );
+
+    const App = () => (
+        <div className="container-fluid text-center">
+            <Navbar />
+            <div className="row content">
+                <Sidebar />
+                <Content />
+              </div>
+            <Footer />
+        </div>
+    );
+
+    ReactDOM.render(<App />, document.getElementById('app'));
+</script>
+</body>
+</html>
